@@ -63,28 +63,28 @@ class Plugin
         $url_login = (stristr($_SERVER['REQUEST_URI'], $url_log)) ? true : false;
 
         // get requested URL
-        isset($_REQUEST['redirect_to']) ? ($url = $url_log) : 0; // if users ssend request to wp-admin
+        // isset($_REQUEST['redirect_to']) ? ($url = $url_log) : 0; // if users ssend request to wp-admin
         if ($url_login && $url_log == $url && 'GET' == $_SERVER['REQUEST_METHOD']) {
             wp_redirect($login_url);
             exit;
         }
 
         $login_url = home_url('/?login=lostpassword');
-        isset($_REQUEST['redirect_to']) ? ($url = "?action=lostpassword") : 0; // if users ssend request to wp-admin
+        // isset($_REQUEST['redirect_to']) ? ($url = "?action=lostpassword") : 0; // if users ssend request to wp-admin
         if ($url_login && "?action=lostpassword" == $url && 'GET' == $_SERVER['REQUEST_METHOD']) {
             wp_redirect($login_url);
             exit;
         }
 
         $login_url = home_url('/?login=register');
-        isset($_REQUEST['redirect_to']) ? ($url = "?action=register") : 0; // if users ssend request to wp-admin
+        // isset($_REQUEST['redirect_to']) ? ($url = "?action=register") : 0; // if users ssend request to wp-admin
         if ($url_login && "?action=register" == $url && 'GET' == $_SERVER['REQUEST_METHOD']) {
             wp_redirect($login_url);
             exit;
         }
 
         $login_url = home_url('/');
-        if ($url_login && stristr($url, '?') && stristr($url, '?action=logout') === false) {
+        if ($url_login && stristr($url, '?') && stripos($url, 'action=logout') === false) {
             wp_redirect($login_url);
             exit;
         }
