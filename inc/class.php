@@ -84,7 +84,7 @@ class Plugin
         }
 
         $login_url = home_url('/');
-        if ($url_login && stristr($url, '?')) {
+        if ($url_login && stristr($url, '?') && stristr($url, '?action=logout') === false) {
             wp_redirect($login_url);
             exit;
         }
