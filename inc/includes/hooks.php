@@ -17,7 +17,7 @@ function wpsfdc_maintenance_message()
 
 // remove specific dashboard menus for non-admin users
 
-function hide_admin_menus()
+function wpsfdc_hide_admin_menus()
 {
     // if (current_user_can( 'create_users' )) return;
     // if (wp_get_current_user()->display_name == "Salman") return;
@@ -43,11 +43,7 @@ function wpsfdc_custom_login_message($message)
 function wpsfdc_login_stylesheet()
 {
     // Load the style sheet from the plugin folder
-
-    wp_enqueue_style('wpsfdc_ol', WPSFDC_R_DIR_CSS . '/main.css', array(), WPSFDC_VERSION);
-    wp_enqueue_style('wpsfdc_log', WPSFDC_R_DIR_CSS . '/main_login.css', array(), WPSFDC_VERSION);
-
-    wp_enqueue_script('wpsfdc', WPSFDC_R_DIR_JS . '/script.js', array('jquery', 'jquery-ui-tooltip'), WPSFDC_VERSION, true);
+    // wp_enqueue_style('wpsfdc_log', WPSFDC_R_DIR_CSS . '/main_login.css', array(), WPSFDC_VERSION);
 
 }
 
@@ -69,32 +65,6 @@ function wpsfdc_login_headerurl($url)
 
 function wpsfdc_login_headertext($text)
 {
-    $text = 'Les Frimousses des Corbisiers';
+    $text = 'Les Frimousses des Corbibis';
     return $text;
-}
-
-// OUVRE UNE PAGE DE CONNEXION EN MODAL
-function wpsfdc_login_modal_stylesheet()
-{
-    wp_enqueue_style(
-        'w3schools',
-        'https://www.w3schools.com/w3css/4/w3.css',
-        array(),
-        WPSFDC_VERSION
-    );
-
-    wp_enqueue_style(
-        'wpsfdc_login_main',
-        WPSFDC_R_DIR_CSS . '/main_login.css',
-        array(),
-        WPSFDC_VERSION
-    );
-
-    wp_enqueue_script(
-        'wpsfdc_login_modal_script',
-        WPSFDC_R_DIR_JS . '/script_login.js',
-        ['jquery'],
-        WPSFDC_VERSION,
-        true
-    );
 }

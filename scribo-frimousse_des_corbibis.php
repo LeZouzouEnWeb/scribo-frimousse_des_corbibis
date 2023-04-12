@@ -4,7 +4,7 @@
  * Plugin Name:       scribo-frimousse_des_corbibis
  * Plugin URI:        https://www.corbisier.fr/wordpress/plugins/scribo-frimousse_des_corbibis/
  * Description:       Un plugin pour paramtrage perso sur le site Frimousse des Corbibis.
- * Version:           1.0.42
+ * Version:           1.0.43
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Eric CORBISIER
@@ -19,7 +19,7 @@
 defined('ABSPATH') or die();
 
 define('WPSFDC_PLUGIN', 'scribo-frimousse_des_corbibis');
-define('WPSFDC_VERSION', '1.0.42');
+define('WPSFDC_VERSION', '1.0.43');
 
 // absolue :
 $slash = (stristr(get_option("home"), "localhost") === false) ? '/' : '';
