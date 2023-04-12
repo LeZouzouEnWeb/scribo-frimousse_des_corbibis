@@ -1,0 +1,1 @@
+{"version":3,"sources":["..\\sass\\src\\_form.scss"],"names":[],"mappings":"AAEQ,yBACI,qBAAA,CACA,6BAAA","file":"style.min.css","sourcesContent":["#adminmenu {\r\n    div {\r\n        &.separator {\r\n            height: 1px !important;\r\n            background: crimson !important;\r\n        }\r\n    }\r\n}\r\n"]}

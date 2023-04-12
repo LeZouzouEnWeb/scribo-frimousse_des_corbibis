@@ -1,39 +1,17 @@
 <?php
+// require_once WPSFDC_DIR_INC . '/functions.php';
 
-function wpsfdc_load_plugin()
-{
-    // require_once WPSFDC_DIR_INCL . '/functions.php';
-    add_action('admin_menu', 'wpsfdc_hide_admin_menus');
-    if (is_admin()) {
-        add_action('admin_menu', 'wpsfdc_register_assets', 10, 1);
-        require_once WPSFDC_DIR_ADMIN . '/admin.php';
-    } else {
-        add_action('wp_enqueue_scripts', 'wpsfdc_register_assets', 1, 1);
-        // require_once WPSFDC_DIR_INCL . '/pages.php';
-    }
-
-    // AUGMENTE MEMOIRE PHP
-    // define('WP_MEMORY_LIMIT', '128M');
-
-    //
-
-    // define('WP_DEBUG', true); // tracks PHP Warnings and Notices
-    // define('SAVEQUERIES', true); // tracks and displays MySQL queries
-
-    // MESSAGE DE MAINTENANCE AUX VISITEUR
-    // add_action( 'get_header', 'wpsfdc_maintenance_message' );
-
-    // PERSONNALISATION DE LA PAGE LOGIN
-    add_action('login_enqueue_scripts', 'wpsfdc_login_stylesheet');
-    add_filter('login_errors', 'wpsfdc_remove_login_errors', 10);
-    // Remove the login form box shake animation for incorrect credentials
-    add_action('login_head', 'wpsfdc_remove_login_error_shake');
-    // Change the logo and header link above the login form
-    add_filter('login_headerurl', 'wpsfdc_login_headerurl');
-    add_filter('login_headertext', 'wpsfdc_login_headertext');
-    add_filter('login_message', 'wpsfdc_custom_login_message');
-
-    // OUVRE UNE PAGE DE CONNEXION EN MODAL
+register_activation_hook(__FILE__, array('\WPSFDC\scribo_frimousse_des_corbibis\Plugin', 'activate'));
+if (is_admin()) {
+    require_once WPSFDC_DIR_ADMIN . 'admin.php';
 }
 
-add_action('plugins_loaded', __NAMESPACE__ . '\\wpsfdc_load_plugin');
+require_once WPSFDC_URI . 'inc/singleton.php';
+require_once WPSFDC_URI . 'inc/class.php';
+
+add_action('plugins_loaded', 'plugins_loaded_wsfdc_plugin');
+function plugins_loaded_wsfdc_plugin()
+{
+    $wsdc_var = \WPSFDC\scribo_frimousse_des_corbibis\Plugin::get_instance();
+    load_plugin_textdomain('scribo-frimousse_des_corbibis', false, WPSFDC_URI . 'languages');
+}
